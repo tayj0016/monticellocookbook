@@ -1,0 +1,124 @@
+body {
+  /* font-size: var(--base-font-size); */
+    padding: 2.5em 0;
+}
+
+.icon {
+    font-size: small;
+}
+
+/* TEXT FORMATTING */
+.pubDate {
+    font-size: small;
+    font-style: italic;
+    color: grey;
+    line-height: 0;
+}
+
+/*HOMEPAGE*/
+.homeBanner {
+    background-image: url("https://images.pexels.com/photos/2949992/pexels-photo-2949992.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-size: cover;
+    background-position: center center;
+    min-height: 300px;
+}
+
+.recipeCard {
+
+}
+
+.recipeCard h5 {
+    font-size: medium;
+}
+
+.recipeCard p {
+    font-size: small;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+
+/*Recipe Detail*/
+.recipe {
+    min-height: 15vw;
+}
+
+.recipe img {
+    width: 15vw;
+    height: 15vw;
+    object-fit: cover;
+    margin-right: 1vw;
+}
+
+
+.recipeImage {
+    height: 10em;
+    width: 10em;
+    /*border: 1px solid black;*/
+    /*overflow: hidden;*/
+    background-size: cover;
+    background-position: center center;
+    /*max-height: 50px;*/
+    /*max-width: 50px;*/
+    /*height: 25px;*/
+    /*width: auto;*/
+    /*transform: rotate(90deg);*/
+  }
+
+.recipeImage img {
+    height: auto;
+    width: 10em;
+    /*transform: rotate(90deg);*/
+    /*border: 1px solid black;*/
+    /*background-size: cover;*/
+    /*background-position: center center;*/
+    /*max-height: 25px;*/
+    /*max-width: 25px;*/
+  }
+
+.rList_image_container {
+    height: 3.5em;
+    width: 3.5em;
+    /*border: 5px solid red;*/
+}
+
+.rList_image_fit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+
+/*TESTING AREA*/
+.borderTest {
+    /*width: 100%;*/
+    /*height: 5em;*/
+    border: 1px solid red;
+}
+
+.test {
+    height: 10em;
+    width: 10em;
+    /*border: 5px solid red;*/
+}
+
+.test_fit {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+:root {
+  --base-font-size: 12px;
+
+  /* breakpoints */
+  --bp-large: 1024px;
+
+  /* Media Queries */
+
+  --mq-large: "(min-width: var(--bp-xlarge)";

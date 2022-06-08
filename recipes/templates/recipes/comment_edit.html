@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Edit Comment</h1>
+    <div class="form-group">
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-primary" value="Save">
+
+        </form>
+    </div>
+    <a href="{% url 'recipes:comment_delete' object.id %}" class="btn btn-danger" role="button">Delete</a>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="row" xmlns="http://www.w3.org/1999/html">
+        <div class="col">
+            <div class="jumbotron jumbotron-fluid homeBanner"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center">Nutritious Inspiration</h2>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 m-0 p-0">
+        {% for item in category_list %}
+            <div class="col mb-4">
+                <div class="card">
+                    <a href="{% url 'recipes:category' item.id %}">
+                        <img class="card-img-top"
+                             src="{{ item.img_url }}"
+                             alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">{{ item.description }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+{#        <div class="col mb-4">#}
+{#            <div class="card">#}
+{#                <a href="{% url 'recipes:detail' recipe_id %}">#}
+{#                    <img src="https://images.pexels.com/photos/2122278/pexels-photo-2122278.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"#}
+{#                         class="card-img-top" alt="Cheese platter">#}
+{#                </a>#}
+{#                <div class="card-body">#}
+{#                    <h5 class="card-title">Random Recipe</h5>#}
+{#                    <p class="card-text">Having trouble making decisions? Find a random recipe!</p>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <h1>{{ recipe.title }}</h1>
+        <div class="col-md-9">
+            <div class="d-block recipe">
+                <img class="float-left" src="{{ recipe.thumb }}" style="width: 250px;">
+                <p><b>Recipe Website:</b> <a href="{{ recipe.website_url }}" target="_blank"
+                                             alt="{{ recipe.website }} website">{{ recipe.website }}</a></p>
+                <p><b>Recipe Description:</b> {{ recipe.description }}</p>
+                <p><b>Added by:</b> {{ recipe.author }}</p>
+            </div>
+            <div class="d-block mt-2">
+                <h2>Comments:</h2>
+                {% for item in comment_list %}
+                    <p>{{ item.content }}
+                        <a href="{% url 'recipes:comment_update' item.id %}"><i
+                                class="bi bi-pencil-square icon"></i></a>
+                        <a href="{% url 'recipes:comment_delete' item.id %}"><i
+                                class="bi bi-x-square-fill icon"></i></a>
+                    </p>
+                    <p><span class="pubDate">published {{ item.created_at }} by {{ item.author }}</span></p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            {% if user.is_authenticated %}
+                <div>
+                    <h2 class="text-center">Options</h2>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="{{ recipe.url }}">Visit Recipe Website</a></li>
+                        <li class="list-group-item"><a href={% url 'recipes:comment' recipe.id %}>Add a Comment</a></li>
+                        <li class="list-group-item"><a href={% url 'recipes:update' recipe.id %}>Edit Recipe</a></li>
+                        <li class="list-group-item"><a href={% url 'recipes:delete' recipe.id %}>Delete Recipe</a></li>
+                    </ul>
+                </div>
+            {% endif %}
+
+            <div>
+                <h2 class="text-center">Categories</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a href="{% url 'recipes:list' %}">All Recipes</a>
+                    </li>
+                    {% for item in category_list %}
+                        <li class="list-group-item">
+                            <a href="{% url 'recipes:category' item.id %}">{{ item.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

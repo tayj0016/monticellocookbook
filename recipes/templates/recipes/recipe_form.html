@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{{ form.non_field_errors }}
+{% block content %}
+
+    <h1>Add A Recipe</h1>
+
+    <div class="form-group">
+        <form  method="post" name="recipeForm" onsubmit="return validateForm()">
+            {% csrf_token %}
+            {{ form.title.errors }}
+            {{ form.as_p }}
+            <input type="submit">
+        </form>
+    </div>
+
+{% endblock %}

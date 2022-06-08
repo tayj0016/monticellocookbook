@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    {#  Script for filtering  #}
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+    <div class="row mb-2">
+        <div style="display: inline-block;">
+            <p>Filter Recipes: </p>
+        </div>
+
+        <div class="ml-2" style="display: inline-block; width: 40%;">
+            <div class="input-group mb-3">
+                <input id="myInput" type="text" class="form-control" placeholder="Recipe name..."
+                       aria-label="Recipient's username"
+                       aria-describedby="button-addon2">
+            </div>
+        </div>
+
+        <div class="ml-2" style="display: inline-block;">
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+                    Category
+                </button>
+                <div class="dropdown-menu" id="myDropdown">
+                    <a class="dropdown-item" href="{% url 'recipes:list' %}">All Recipes</a>
+                    {% for item in category_list %}
+                        <a class="dropdown-item" href="{% url 'recipes:category' item.id %}">{{ item.name }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Recipe</th>
+                <th>Category</th>
+                <th>Website</th>
+                <th>Link</th>
+            </tr>
+            </thead>
+            <tbody id="myTable">
+
+            {% for item in recipe_list %}
+                <tr>
+                    <td>
+                        <div class="rList_image_container">
+                            <img src="{{ item.thumb }}" class="rList_image_fit">
+                        </div>
+                    </td>
+                    <td><a href="{% url 'recipes:detail' item.pk %}">{{ item.title }}</a></td>
+                    <td>{{ item.category }}</td>
+                    <td>{{ item.website }}</td>
+                    <td><a href="{{ item.url }}" target="_blank">Go to the recipe!</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+
+        </table>
+    </div>
+
+{% endblock %}
